@@ -57,11 +57,13 @@ exports.post = async (req, res, next) => {
         );
 
         res.status(201).send({ 
+            erro: 0,
             message: 'Cliente cadastrado com sucesso!'
         });
 
     } catch (e) {
         res.status(400).send({ 
+            erro: 1,
             message: 'Falha ao cadastrar Cliente', 
             data: e.toString()
         });
