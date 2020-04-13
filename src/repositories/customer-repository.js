@@ -5,7 +5,7 @@ const Customer = mongoose.model('Customer');
 
 exports.get = async() => {
     var res = await Customer.find({
-    }, 'name email password');
+    }, 'name email password image');
     return res;
 }
 

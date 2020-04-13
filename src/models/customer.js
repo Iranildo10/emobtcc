@@ -8,6 +8,18 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    cpf: {
+        type: String,
+        required: true
+    },
+    cel: {
+        type: String,
+        required: true
+    },
+    tel: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -16,6 +28,10 @@ const schema = new Schema({
         type: String,
         required: true
         
+    },
+    image: {
+        type: String,
+        required: true
     }
 
 });
