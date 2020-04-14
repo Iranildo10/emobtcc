@@ -8,6 +8,9 @@ const controller = require('../controllers/customer-controller');
 //Enviar informações
 router.post('/', controller.post);
 
+//Login
+router.post('/login', controller.login);
+
 //Buscar informações
 router.get('/', controller.get);
 

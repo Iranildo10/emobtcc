@@ -5,6 +5,7 @@ const repository = require('../repositories/customer-repository');
 const azure = require('azure-storage');
 const guid = require('guid');
 var config = require('../config');
+const md5 = require('md5');
 
 // cadastrar cliente
 exports.post = async (req, res, next) => {
@@ -44,14 +45,13 @@ exports.post = async (req, res, next) => {
             }
         });
 
-
         await repository.create({
             name: req.body.name,
             cpf: req.body.cpf,
             cel: req.body.cel,
             tel: req.body.tel,
             email: req.body.email,
-            password: req.body.password,
+            password: md5(req.body.password + global.SALT_KEY),
             image: 'https://emob.blob.core.windows.net/customer-images/' + filename
         }
         );
@@ -67,6 +67,30 @@ exports.post = async (req, res, next) => {
         });
     }
 
+};
+
+// Login
+exports.login = async(req, res, next) => {
+    try{
+
+        var data = await repository.login(req.body.email, md5(req.body.password + global.SALT_KEY));
+        
+        if(data){
+            res.status(201).send({
+                error: 0,
+                message: "Usuario logado com sucesso!",
+                usuario: data
+              });
+        }
+
+    } catch (e) {
+        res.status(400).send({
+            error: 400,
+            message: 'Falha ao processar sua requisição',
+            except: e.toString()
+        });
+        
+    }
 };
 
 exports.get = async (req, res, next) =>{

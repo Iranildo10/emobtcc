@@ -13,3 +13,13 @@ exports.create = async(data) => {
     var customer = new Customer(data);
     await customer.save();
 }
+
+exports.login = async(email, password) => {
+    var res = await Customer.find({
+        email: email,
+        password: password
+    });
+    return res;
+}
+
+
