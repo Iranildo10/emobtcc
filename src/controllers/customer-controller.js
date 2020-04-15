@@ -75,13 +75,19 @@ exports.login = async(req, res, next) => {
 
         var data = await repository.login(req.body.email, md5(req.body.password + global.SALT_KEY));
         
-        if(data){
+        if(data != ""){
             res.status(201).send({
                 error: 0,
                 message: "Usuario logado com sucesso!",
                 usuario: data
               });
         }
+        else
+        res.status(400).send({
+            error: 400,
+            message: 'Falha ao processar sua requisição',
+            except: e.toString()
+        });
 
     } catch (e) {
         res.status(400).send({
