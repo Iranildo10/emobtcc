@@ -61,7 +61,7 @@ exports.post = async (req, res, next) => {
         console.log(e);
         res.status(400).send({ 
             message: 'Falha ao cadastrar produto', 
-            
+            error: e.toString()
         });
     }
 
