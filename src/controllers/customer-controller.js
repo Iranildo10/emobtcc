@@ -85,14 +85,14 @@ exports.login = async(req, res, next) => {
         else
         res.status(400).send({
             error: 400,
-            message: 'Falha ao processar sua requisição',
+            message: 'Não foi possível logar',
             except: e.toString()
         });
 
     } catch (e) {
         res.status(400).send({
             error: 400,
-            message: 'Falha ao processar sua requisição',
+            message: 'Verifique e-mail ou senha',
             except: e.toString()
         });
         
