@@ -53,7 +53,6 @@ exports.post = async (req, res, next) => {
             image: 'https://emob.blob.core.windows.net/product-images/' + filename
         });
         res.status(201).send({ 
-            
             message: 'Produto cadastrado com sucesso!'
         });
 
