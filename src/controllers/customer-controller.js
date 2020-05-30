@@ -10,20 +10,20 @@ const md5 = require('md5');
 // cadastrar cliente
 exports.post = async (req, res, next) => {
 
-    let contract = new ValidationContract();
+    //let contract = new ValidationContract();
 
-    contract.hasMinLen(req.body.name, 2, 'O nome deve conter no mínimo 2 caracteres');
+    //contract.hasMinLen(req.body.name, 2, 'O nome deve conter no mínimo 2 caracteres');
 
     //contract.cpfIsValid(req.body.cpf, 'CPF inválido');
 
-    contract.isEmail(req.body.email,'E-mail inválido');
+    //contract.isEmail(req.body.email,'E-mail inválido');
 
-    contract.hasMinLen(req.body.password, 6, 'A senha deve conter no mínimo 6 caracteres');
+    //contract.hasMinLen(req.body.password, 6, 'A senha deve conter no mínimo 6 caracteres');
 
-    if(!contract.isValid()){
+    /*if(!contract.isValid()){
         res.status(400).send(contract.errors()).end();
         return;
-    }
+    }*/
 
     try {
 
