@@ -1,13 +1,13 @@
 'use strict'
 
 const ValidationContract = require('../validators/fluent-validator');
-const repository = require('../repositories/customer-repository');
+const repository = require('../repositories/usuario-repository');
 const azure = require('azure-storage');
 const guid = require('guid');
 var config = require('../config');
 const md5 = require('md5');
 
-// cadastrar cliente
+// cadastrar usuario
 exports.post = async (req, res, next) => {
 
     //let contract = new ValidationContract();
@@ -37,32 +37,34 @@ exports.post = async (req, res, next) => {
         let buffer = new Buffer(matches[2], 'base64');
 
         // Salva a imagem
-        await blobSvc.createBlockBlobFromText('customer-images', filename, buffer, {
+        await blobSvc.createBlockBlobFromText('usuarios', filename, buffer, {
             contentType: type
         }, function (error, result, response) {
             if (error) {
-                filename = 'default-customer.png'
+                filename = 'default-usuario.png'
             }
         });
 
         await repository.create({
-            name: req.body.name,
-            cpf: req.body.cpf,
-            cel: req.body.cel,
-            tel: req.body.tel,
+            provider: req.body.provider,
+            nome: req.body.name,
             email: req.body.email,
-            password: md5(req.body.password + global.SALT_KEY),
-            image: 'https://emob.blob.core.windows.net/customer-images/' + filename
+            celular: req.body.celular,
+            telefone: req.body.telefone,
+            senha: md5(req.body.senha + global.SALT_KEY),
+            identificacao: req.body.identificacao,
+            imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename,
+            imoveis: req.body.imoveis
         }
         );
 
         res.status(201).send({ 
-            message: 'Cliente cadastrado com sucesso!'
+            message: 'Usuario cadastrado com sucesso!'
         });
 
     } catch (e) {
         res.status(400).send({ 
-            message: 'Falha ao cadastrar Cliente', 
+            message: 'Falha ao cadastrar Usuario', 
             data: e.toString()
         });
     }
@@ -73,7 +75,7 @@ exports.post = async (req, res, next) => {
 exports.login = async(req, res, next) => {
     try{
 
-        var data = await repository.login(req.body.email, md5(req.body.password + global.SALT_KEY));
+        var data = await repository.login(req.body.email, md5(req.body.senha + global.SALT_KEY));
         
         if(data != ""){
             res.status(201).send({

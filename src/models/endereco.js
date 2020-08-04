@@ -4,42 +4,45 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    title:{
+    logradouro:{
         type: String,
         required: true,
-        trim: true
+       
     },
-    slug: {
-        type: String,
-        required: true,
-        trim: true,
-        index: true,
-        unique: true
-    },
-    description: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    price:{
+    numero: {
         type: Number,
+        required: true,
+        
+    },
+    cep: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    bairro:{
+        type: String,
         required: true
     },
-    active:{
-        type: Boolean,
+    cidade:{
+        type: String,
         required: true,
         default: true
     },
-    tags:[{
+    uf:{
         type: String,
         required:true
-    }],
-    image:{
+    },
+    latitude:{
         type: String,
         required: true,
-        trim: true
+       
+    },
+    longitude:{
+        type: String,
+        required: true,
+       
     }
 
 });
 
-module.exports = mongoose.model('Product', schema);
+module.exports = mongoose.model('Endereco', schema);
