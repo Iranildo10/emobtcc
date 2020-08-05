@@ -4,15 +4,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    type:{
+
+    teste:{
         type: String,
         required: true
     },
-    value:{
-        type: String,
-        required: true
-    }
+    
 
 });
 
-module.exports = mongoose.model('Identificacao', schema);
+module.exports = mongoose.model('Teste', schema);

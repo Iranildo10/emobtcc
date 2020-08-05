@@ -2,9 +2,6 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const identificacao = require('../models/identificacao');
-const imovel = require('../models/imovel');
-
 
 const schema = new Schema({
     provider:{
@@ -33,6 +30,14 @@ const schema = new Schema({
         
         
     },
+    
+    imagem: {
+        type: String,
+        
+    },
+
+    /*
+
     identificacao:{
         type: Schema({
             type:{
@@ -45,12 +50,8 @@ const schema = new Schema({
             }
         })
     },
-    imagem: {
-        type: String,
-        
-    },
 
-    /*
+
     imoveis:[{
         type: Schema(
 

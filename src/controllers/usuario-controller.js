@@ -7,6 +7,7 @@ const guid = require('guid');
 var config = require('../config');
 const md5 = require('md5');
 
+
 // cadastrar usuario
 exports.post = async (req, res, next) => {
 
@@ -47,14 +48,14 @@ exports.post = async (req, res, next) => {
 
         await repository.create({
             provider: req.body.provider,
-            nome: req.body.name,
+            nome: req.body.nome,
             email: req.body.email,
             celular: req.body.celular,
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
-            identificacao: req.body.identificacao,
+            //identificacao: req.body.identificacao,
             imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename,
-            imoveis: req.body.imoveis
+            
         }
         );
 
@@ -67,6 +68,8 @@ exports.post = async (req, res, next) => {
             message: 'Falha ao cadastrar Usuario', 
             data: e.toString()
         });
+
+        console.log(e)
     }
 
 };
