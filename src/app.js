@@ -18,7 +18,7 @@ const Usuario = require('./models/usuario');
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const usuarioRoute = require('./routes/usuario-route');
-const testeRoute = require('./routes/teste-route');
+
 
 
 app.use(bodyParser.json({
@@ -37,7 +37,6 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoute);
 app.use('/usuario', usuarioRoute);
-app.use('/teste', testeRoute);
 
 
 
