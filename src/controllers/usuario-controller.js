@@ -11,23 +11,10 @@ const md5 = require('md5');
 // cadastrar usuario
 exports.post = async (req, res, next) => {
 
-    //let contract = new ValidationContract();
-
-    //contract.hasMinLen(req.body.name, 2, 'O nome deve conter no mínimo 2 caracteres');
-
-    //contract.cpfIsValid(req.body.cpf, 'CPF inválido');
-
-    //contract.isEmail(req.body.email,'E-mail inválido');
-
-    //contract.hasMinLen(req.body.password, 6, 'A senha deve conter no mínimo 6 caracteres');
-
-    /*if(!contract.isValid()){
-        res.status(400).send(contract.errors()).end();
-        return;
-    }*/
-
     try {
 
+
+        /*
         // Cria o Blob Service
         const blobSvc = azure.createBlobService(config.containerConnectionString);
 
@@ -45,6 +32,10 @@ exports.post = async (req, res, next) => {
                 filename = 'default-usuario.png'
             }
         });
+        
+        */ 
+
+        
 
         await repository.create({
             provider: req.body.provider,
@@ -54,8 +45,8 @@ exports.post = async (req, res, next) => {
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
             //identificacao: req.body.identificacao,
-            imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename,
-            
+            //imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename,
+            imagem: req.body.imagem
         }
         );
 

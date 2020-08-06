@@ -9,7 +9,7 @@ const app = express();
 const router = express.Router();
 
 // Conecta ao banco
-mongoose.connect(config.connectionString); 
+mongoose.connect(config.connectionString, { useNewUrlParser: true, useUnifiedTopology: true});
 
 //Carrega os Models
 const Usuario = require('./models/usuario');
