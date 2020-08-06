@@ -5,11 +5,11 @@ const router = express.Router();
 const controller = require('../controllers/usuario-controller');
 
 
-//Enviar informações
+//Cadastrar usuario
 router.post('/', controller.post);
 
 //Login
-router.post('/login', controller.login);
+router.get('/login', controller.login);
 
 //Buscar informações
 router.get('/', controller.get);

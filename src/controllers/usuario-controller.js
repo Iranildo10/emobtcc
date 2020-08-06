@@ -13,13 +13,12 @@ exports.post = async (req, res, next) => {
 
     try {
 
-
-        /*
+        
         // Cria o Blob Service
         const blobSvc = azure.createBlobService(config.containerConnectionString);
 
-        let filename = guid.raw().toString() + '.jpeg';
-        let rawdata = req.body.image;
+        let filename = guid.raw().toString() + '.jpg';
+        let rawdata = req.body.imagem;
         let matches = rawdata.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
         let type = matches[1];
         let buffer = new Buffer(matches[2], 'base64');
@@ -33,10 +32,7 @@ exports.post = async (req, res, next) => {
             }
         });
         
-        */ 
-
         
-
         await repository.create({
             provider: req.body.provider,
             nome: req.body.nome,
@@ -44,9 +40,8 @@ exports.post = async (req, res, next) => {
             celular: req.body.celular,
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
-            //identificacao: req.body.identificacao,
-            //imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename,
-            imagem: req.body.imagem
+            identificacao: req.body.identificacao,
+            imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename
         }
         );
 

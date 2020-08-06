@@ -35,9 +35,6 @@ const schema = new Schema({
         type: String,
         
     },
-
-    /*
-
     identificacao:{
         type: Schema({
             type:{
@@ -51,7 +48,7 @@ const schema = new Schema({
         })
     },
 
-
+    /*
     imoveis:[{
         type: Schema(
 
