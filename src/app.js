@@ -13,12 +13,12 @@ mongoose.connect(config.connectionString, { useNewUrlParser: true, useUnifiedTop
 
 //Carrega os Models
 const Usuario = require('./models/usuario');
-
+const Imovel = require('./models/imovel');
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const usuarioRoute = require('./routes/usuario-route');
-//const imovelRoute = require('./routes/imovel-route');
+const imovelRoute = require('./routes/imovel-route');
 
 
 
@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoute);
 app.use('/usuario', usuarioRoute);
-//app.use('/imovel', imovelRoute);
+app.use('/imovel', imovelRoute);
 
 
 

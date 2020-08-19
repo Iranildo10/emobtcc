@@ -2,9 +2,6 @@
 
 //const ValidationContract = require('../validators/fluent-validator');
 const repository = require('../repositories/usuario-repository');
-const azure = require('azure-storage');
-const guid = require('guid');
-var config = require('../config');
 const md5 = require('md5');
 
 
@@ -12,32 +9,6 @@ const md5 = require('md5');
 exports.post = async (req, res, next) => {
 
     try {
-
-
-        /**
-         * // Cria o Blob Service
-        const blobSvc = azure.createBlobService(config.containerConnectionString);
-
-        let filename = guid.raw().toString() + '.jpg';
-        let rawdata = req.body.imagem;
-        let matches = rawdata.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-        let type = matches[1];
-        let buffer = new Buffer(matches[2], 'base64');
-
-        // Salva a imagem
-        await blobSvc.createBlockBlobFromText('usuarios', filename, buffer, {
-            contentType: type
-        }, function (error, result, response) {
-            if (error) {
-                filename = 'default-usuario.png'
-            }
-        });
-        
-         */
-        
-        
-        //+ filename
-        
         await repository.create({
             provider: req.body.provider,
             nome: req.body.nome,
@@ -46,7 +17,6 @@ exports.post = async (req, res, next) => {
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
             identificacao: req.body.identificacao,
-            //imagem: 'https://emob.blob.core.windows.net/usuarios/' 
             imagem: req.body.imagem
         }
         );

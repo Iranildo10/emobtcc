@@ -2,10 +2,7 @@
 
 const repository = require('../repositories/imovel-repository');
 
-
-/** 
- * 
- * // cadastrar imovel
+ // cadastrar imovel
 exports.post = async (req, res, next) => {
 
     try {
@@ -35,5 +32,5 @@ exports.post = async (req, res, next) => {
 
 };
 
-*/
+
 

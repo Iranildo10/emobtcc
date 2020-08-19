@@ -11,15 +11,17 @@ exports.get = async() => {
 }
 */ 
 
+exports.create = async(data) => {
+    var usuario = new Usuario(data);
+    await usuario.save();
+}
+
+
 exports.get = async() => {
     var res = await Usuario.find({});
     return res;
 }
 
-exports.create = async(data) => {
-    var usuario = new Usuario(data);
-    await usuario.save();
-}
 
 exports.login = async(email, senha) => {
     var res = await Usuario.find({
