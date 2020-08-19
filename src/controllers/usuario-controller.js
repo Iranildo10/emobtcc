@@ -1,6 +1,6 @@
 'use strict'
 
-const ValidationContract = require('../validators/fluent-validator');
+//const ValidationContract = require('../validators/fluent-validator');
 const repository = require('../repositories/usuario-repository');
 const azure = require('azure-storage');
 const guid = require('guid');
@@ -32,6 +32,7 @@ exports.post = async (req, res, next) => {
             }
         });
         
+        //+ filename
         
         await repository.create({
             provider: req.body.provider,
@@ -41,7 +42,7 @@ exports.post = async (req, res, next) => {
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
             identificacao: req.body.identificacao,
-            imagem: 'https://emob.blob.core.windows.net/usuarios/' + filename
+            imagem: 'https://emob.blob.core.windows.net/usuarios/' 
         }
         );
 

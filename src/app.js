@@ -18,6 +18,7 @@ const Usuario = require('./models/usuario');
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const usuarioRoute = require('./routes/usuario-route');
+//const imovelRoute = require('./routes/imovel-route');
 
 
 
@@ -37,6 +38,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoute);
 app.use('/usuario', usuarioRoute);
+//app.use('/imovel', imovelRoute);
 
 
 

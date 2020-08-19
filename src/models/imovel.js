@@ -3,8 +3,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-
 const schema = new Schema({
     tipo_imovel:{
         type: String,
