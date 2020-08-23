@@ -9,9 +9,11 @@ const controller = require('../controllers/usuario-controller');
 router.post('/', controller.post);
 
 //Login
-router.get('/login', controller.login);
+router.post('/login', controller.login);
 
 //Buscar informações
 router.get('/', controller.get);
 
 module.exports = router;
+
+
