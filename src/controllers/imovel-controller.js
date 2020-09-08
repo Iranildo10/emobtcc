@@ -70,8 +70,10 @@ exports.update = async (req, res, next) => {
 //Pesquisar imóvel por cidade
 exports.getByCidade = async (req, res, next) =>{
     try {
-        var data = await repository.getByCidade(req.body.cidade);
+        var data = await repository.getByCidade(req.body.endereco);
+
         res.status(200).send(data);
+
     } catch (error) {
         res.status(500).send({
             message: 'Falha ao processar sua requisição',
