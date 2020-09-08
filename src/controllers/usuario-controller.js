@@ -36,6 +36,40 @@ exports.post = async (req, res, next) => {
 
 };
 
+//update
+exports.update = async (req, res, next) => {
+
+    try {
+
+        var filter = {id: req.body.id};
+        var update = {
+            provider: req.body.provider,
+            nome: req.body.nome,
+            email: req.body.email,
+            celular: req.body.celular,
+            telefone: req.body.telefone,
+            senha: md5(req.body.senha + global.SALT_KEY),
+            identificacao: req.body.identificacao,
+            imagem: req.body.imagem
+        };
+
+        await repository.update(filter, update);
+
+        res.status(201).send({ 
+            message: 'Usuario atualizado com sucesso!'
+        });
+
+    } catch (e) {
+        res.status(400).send({ 
+            message: 'Falha ao atualizar Usuario', 
+            data: e.toString()
+        });
+
+        console.log(e)
+    }
+
+};
+
 // Login
 exports.login = async(req, res, next) => {
     try{

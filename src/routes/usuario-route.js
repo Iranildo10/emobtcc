@@ -14,6 +14,9 @@ router.post('/login', controller.login);
 //Buscar informações
 router.get('/', controller.get);
 
+//Atualizar Cadastro
+router.put('/', controller.update);
+
 module.exports = router;
 
 
