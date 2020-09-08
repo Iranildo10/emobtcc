@@ -30,4 +30,8 @@ exports.login = async(email, senha) => {
     return res;
 }
 
+exports.remove = async(user_id) => {
+    await Usuario.findByIdAndRemove(user_id);
+}
+
 

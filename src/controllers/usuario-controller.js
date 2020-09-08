@@ -100,6 +100,29 @@ exports.login = async(req, res, next) => {
     }
 };
 
+//Remover Usuario
+exports.remove = async (req, res, next) => {
+
+    try {
+        await repository.create(req.body.id
+        );
+
+        res.status(201).send({ 
+            message: 'Usuario removido com sucesso!'
+        });
+
+    } catch (e) {
+        res.status(400).send({ 
+            message: 'Falha ao remover Usuario', 
+            data: e.toString()
+        });
+
+        console.log(e)
+    }
+
+};
+
+
 exports.get = async (req, res, next) =>{
     try {
         var data = await repository.get();

@@ -17,6 +17,9 @@ router.get('/', controller.get);
 //Atualizar Cadastro
 router.put('/', controller.update);
 
+//Remover Cadastro
+router.delete('/', controller.update);
+
 module.exports = router;
 
 
