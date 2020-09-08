@@ -5,7 +5,7 @@ const Usuario = mongoose.model('Usuario');
 
 
 exports.update = async(filter, update) => {
-    var res = await Usuario.findOneAndUpdate(filter, update);
+    var res = await Usuario.findByIdAndUpdate(filter, update);
     return res;
 }
 

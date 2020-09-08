@@ -41,7 +41,7 @@ exports.update = async (req, res, next) => {
 
     try {
 
-        var filter = {id: req.body.id};
+        var filter = req.body.id;
         var update = {
             provider: req.body.provider,
             nome: req.body.nome,
