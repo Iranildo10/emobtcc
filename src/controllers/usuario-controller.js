@@ -104,7 +104,7 @@ exports.login = async(req, res, next) => {
 exports.remove = async (req, res, next) => {
 
     try {
-        await repository.create(req.body.id
+        await repository.remove(req.body.id
         );
 
         res.status(201).send({ 
@@ -122,7 +122,7 @@ exports.remove = async (req, res, next) => {
 
 };
 
-
+//Pesquisar Todos
 exports.get = async (req, res, next) =>{
     try {
         var data = await repository.get();

@@ -31,7 +31,7 @@ exports.login = async(email, senha) => {
 }
 
 exports.remove = async(user_id) => {
-    await Usuario.findByIdAndRemove(user_id);
+    await Usuario.findOneAndRemove(user_id);
 }
 
 
