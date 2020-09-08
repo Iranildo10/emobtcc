@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
+    user_id:{
+        type: String,
+        required: true
+    },
     tipo_imovel:{
         type: String,
         required: true

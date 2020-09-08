@@ -7,6 +7,7 @@ exports.post = async (req, res, next) => {
 
     try {
         await repository.create({
+            user_id: req.body.user_id,
             tipo_imovel: req.body.tipo_imovel,
             tipo_anuncio: req.body.tipo_anuncio,
             imagens: req.body.imagens,
