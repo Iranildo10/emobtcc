@@ -104,7 +104,7 @@ exports.login = async(req, res, next) => {
 exports.remove = async (req, res, next) => {
 
     try {
-        await repository.remove(req.body.id
+        await repository.remove(req.params.id
         );
 
         res.status(201).send({ 

@@ -18,7 +18,7 @@ router.get('/', controller.get);
 router.put('/', controller.update);
 
 //Remover Cadastro
-router.delete('/', controller.remove);
+router.delete('/:id', controller.remove);
 
 module.exports = router;
 
