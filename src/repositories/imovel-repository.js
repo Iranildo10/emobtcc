@@ -26,9 +26,7 @@ exports.getByCidade = async(cidade) => {
 
 //Pesquisar todos
 exports.get = async() => {
-    var res = await Imovel.find({
-    }
-    );
+    var res = await Imovel.find({});
     return res;
 }
 

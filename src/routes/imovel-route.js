@@ -12,13 +12,13 @@ router.post('/', controller.post);
 router.put('/', controller.update);
 
 //Pesquisar por Cidade
-router.get('/', controller.getByCidade);
+router.get('/cidade', controller.getByCidade);
 
 //Pesquisar todos
 router.get('/', controller.get);
 
 //Pesquisar por usuario que cadastrou o imovel
-router.get('/', controller.getByUserId);
+router.get('/usuario', controller.getByUserId);
 
 
 
