@@ -32,4 +32,13 @@ exports.get = async() => {
     return res;
 }
 
+//Pesquisar por usuario que cadastrou o imóvel
+exports.getByUserId = async(user_id) => {
+    var res = await Imovel.find({
+        user_id: user_id
+    }
+    );
+    return res;
+}
+
 

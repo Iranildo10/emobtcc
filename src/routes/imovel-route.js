@@ -11,9 +11,14 @@ router.post('/', controller.post);
 //Atualizar imovel
 router.put('/', controller.update);
 
+//Pesquisar por Cidade
 router.get('/', controller.getByCidade);
 
+//Pesquisar todos
 router.get('/', controller.get);
+
+//Pesquisar por usuario que cadastrou o imovel
+router.get('/', controller.getByUserId);
 
 
 module.exports = router;

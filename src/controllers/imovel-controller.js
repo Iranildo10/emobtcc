@@ -122,3 +122,30 @@ exports.get = async (req, res, next) =>{
         
     }
 };
+
+//Pesquisar por usuario que cadastrou o imóvel
+exports.getByUserId = async(req, res, next) => {
+    try{
+
+        var data = await repository.getByUserId(req.body.user_id);
+        
+        if(data != ""){
+            res.status(201).send({
+                error: 0,
+                imoveis: data
+              });
+        }
+        else
+        res.status(400).send({
+            error: 400,
+            except: e.toString()
+        });
+
+    } catch (e) {
+        res.status(400).send({
+            error: 400,
+            except: e.toString()
+        });
+        
+    }
+};
