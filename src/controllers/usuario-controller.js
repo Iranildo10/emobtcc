@@ -16,7 +16,8 @@ exports.post = async (req, res, next) => {
             celular: req.body.celular,
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
-            identificacao: req.body.identificacao,
+             type: req.body.type,
+            value: req.body.value,
             imagem: req.body.imagem
         }
         );
@@ -49,7 +50,8 @@ exports.update = async (req, res, next) => {
             celular: req.body.celular,
             telefone: req.body.telefone,
             senha: md5(req.body.senha + global.SALT_KEY),
-            identificacao: req.body.identificacao,
+            type: req.body.type,
+            value: req.body.value,
             imagem: req.body.imagem
         };
 
@@ -94,6 +96,36 @@ exports.login = async(req, res, next) => {
         res.status(400).send({
             error: 400,
             message: 'Verifique e-mail ou senha',
+            except: e.toString()
+        });
+        
+    }
+};
+
+//Pesquisar por cpf
+exports.findByCpf = async(req, res, next) => {
+    try{
+
+        var data = await repository.findByCpf(req.params.nome);
+        
+        if(data != ""){
+            res.status(201).send({
+                error: 0,
+                message: "Usuario encontrado!",
+                usuario: data
+              });
+        }
+        else
+        res.status(400).send({
+            error: 400,
+            message: 'Não foi possível encontrar o usuário',
+            except: e.toString()
+        });
+
+    } catch (e) {
+        res.status(400).send({
+            error: 400,
+            message: 'Verifique o cpf digitado',
             except: e.toString()
         });
         

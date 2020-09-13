@@ -35,6 +35,23 @@ const schema = new Schema({
         type: String,
         
     },
+
+    type: {
+            type: String,
+            
+        },
+
+    value: {
+            type: String,
+            
+        }
+       
+    /*
+    imoveis:[{
+        type: Schema(
+
+        )
+    }],
     identificacao:{
         type: Schema({
             type:{
@@ -46,17 +63,8 @@ const schema = new Schema({
                 required: true
             }
         })
-    },
-
-    /*
-    imoveis:[{
-        type: Schema(
-
-        )
-    }]
     */ 
     
-
 });
 
 module.exports = mongoose.model('Usuario', schema);

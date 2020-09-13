@@ -4,42 +4,84 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    user_id:{
+    user_id: {
         type: String,
         required: true
     },
-    tipo_imovel:{
+    tipo_imovel: {
         type: String,
         required: true
     },
-    tipo_anuncio:{
+    tipo_anuncio: {
         type: String,
         required: true
     },
-    imagens:[{
+    imagens: [{
         type: String
     }],
-    valor:{
+    valor: {
         type: Number
     },
-    avaliacao:{
+    avaliacao: {
         type: Number
     },
-    comodos:[{
+    comodos: [{
         type: Schema(
-           {
-            nome:{
-                type: String,
-                required: true
-            },
-            photo:{
-                type: String,
-                required: true
+            {
+                nome: {
+                    type: String,
+                    required: true
+                },
+                photo: {
+                    type: String,
+                    required: true
+                }
             }
-           }
         )
     }],
-    endereco:{
+    logradouro: {
+        type: String,
+        required: true,
+
+    },
+    numero: {
+        type: Number,
+        required: true,
+
+    },
+    cep: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    bairro: {
+        type: String,
+        required: true
+    },
+    cidade: {
+        type: String,
+        required: true,
+        default: true
+    },
+    uf: {
+        type: String,
+        required: true
+    },
+    latitude: {
+        type: String,
+        required: true,
+
+    },
+    longitude: {
+        type: String,
+        required: true,
+
+    }
+
+
+
+    /**
+     * endereco:{
         type: Schema({
             logradouro:{
                 type: String,
@@ -81,6 +123,7 @@ const schema = new Schema({
             }
         })
     }
+     */
 
 });
 

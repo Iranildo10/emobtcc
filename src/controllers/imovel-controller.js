@@ -2,7 +2,7 @@
 
 const repository = require('../repositories/imovel-repository');
 
- // cadastrar imovel
+// cadastrar imovel
 exports.post = async (req, res, next) => {
 
     try {
@@ -14,17 +14,24 @@ exports.post = async (req, res, next) => {
             valor: req.body.valor,
             avaliacao: req.body.avaliacao,
             comodos: req.body.comodos,
-            endereco: req.body.endereco
+            logradouro: req.body.logradouro,
+            numero: req.body.numero,
+            cep: req.body.cep,
+            bairro: req.body.bairro,
+            cidade: req.body.cidade,
+            uf: req.body.uf,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude
         }
         );
 
-        res.status(201).send({ 
+        res.status(201).send({
             message: 'Imovel cadastrado com sucesso!'
         });
 
     } catch (e) {
-        res.status(400).send({ 
-            message: 'Falha ao cadastrar Imovel', 
+        res.status(400).send({
+            message: 'Falha ao cadastrar Imovel',
             data: e.toString()
         });
 
@@ -47,18 +54,26 @@ exports.update = async (req, res, next) => {
             valor: req.body.valor,
             avaliacao: req.body.avaliacao,
             comodos: req.body.comodos,
-            endereco: req.body.endereco
+            logradouro: req.body.logradouro,
+            numero: req.body.numero,
+            cep: req.body.cep,
+            bairro: req.body.bairro,
+            cidade: req.body.cidade,
+            uf: req.body.uf,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude
+
         };
 
         await repository.update(filter, update);
 
-        res.status(201).send({ 
+        res.status(201).send({
             message: 'Imóvel atualizado com sucesso!'
         });
 
     } catch (e) {
-        res.status(400).send({ 
-            message: 'Falha ao atualizar Imóvel', 
+        res.status(400).send({
+            message: 'Falha ao atualizar Imóvel',
             data: e.toString()
         });
 
@@ -67,20 +82,5 @@ exports.update = async (req, res, next) => {
 
 };
 
-//Pesquisar imóvel por cidade
-exports.getByCidade = async (req, res, next) =>{
-    try {
-        var data = await repository.getByCidade(req.body.endereco);
-
-        res.status(200).send(data);
-
-    } catch (error) {
-        res.status(500).send({
-            message: 'Falha ao processar sua requisição',
-            data: error
-        });
-        
-    }
-};
 
 

@@ -15,12 +15,5 @@ exports.update = async(filter, update) => {
     return res;
 }
 
-//Pesquisar imóvel por cidade
-exports.getByCidade = async(endereco) => {
-    var res = await Imovel.find({
-        endereco: {
-            cidade: endereco.cidade
-        }
-    });
-    return res;
-}
+
+
