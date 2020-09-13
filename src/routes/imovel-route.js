@@ -13,5 +13,7 @@ router.put('/', controller.update);
 
 router.get('/', controller.getByCidade);
 
+router.get('/', controller.get);
+
 
 module.exports = router;
