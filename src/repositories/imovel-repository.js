@@ -15,5 +15,11 @@ exports.update = async(filter, update) => {
     return res;
 }
 
-
+//Pesquisar por cidade
+exports.getByCidade = async(cidade) => {
+    var res = await Imovel.find({
+        cidade: cidade
+    });
+    return res;
+}
 

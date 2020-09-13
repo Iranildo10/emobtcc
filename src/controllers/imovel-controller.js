@@ -82,5 +82,31 @@ exports.update = async (req, res, next) => {
 
 };
 
+//Pesquisar por Cidade
+exports.getByCidade = async(req, res, next) => {
+    try{
+
+        var data = await repository.getByCidade(req.body.cidade);
+        
+        if(data != ""){
+            res.status(201).send({
+                error: 0,
+                imoveis: data
+              });
+        }
+        else
+        res.status(400).send({
+            error: 400,
+            except: e.toString()
+        });
+
+    } catch (e) {
+        res.status(400).send({
+            error: 400,
+            except: e.toString()
+        });
+        
+    }
+};
 
 

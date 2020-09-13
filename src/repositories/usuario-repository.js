@@ -30,6 +30,14 @@ exports.login = async(email, senha) => {
     return res;
 }
 
+exports.getByEmailAndCpf = async(email, value) => {
+    var res = await Usuario.find({
+        email: email,
+        value: value
+    });
+    return res;
+}
+
 exports.remove = async(user_id) => {
     await Usuario.findOneAndRemove(user_id);
 }

@@ -11,7 +11,6 @@ router.post('/', controller.post);
 //Atualizar imovel
 router.put('/', controller.update);
 
-//Pesquisar por cidade 
 router.get('/', controller.getByCidade);
 
 

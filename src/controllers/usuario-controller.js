@@ -9,30 +9,41 @@ const md5 = require('md5');
 exports.post = async (req, res, next) => {
 
     try {
-        await repository.create({
-            provider: req.body.provider,
-            nome: req.body.nome,
-            email: req.body.email,
-            celular: req.body.celular,
-            telefone: req.body.telefone,
-            senha: md5(req.body.senha + global.SALT_KEY),
-             type: req.body.type,
-            value: req.body.value,
-            imagem: req.body.imagem
+
+        var data = await repository.getByEmailAndCpf(req.body.email, req.body.value);
+
+
+        if(data = ""){
+
+            await repository.create({
+                provider: req.body.provider,
+                nome: req.body.nome,
+                email: req.body.email,
+                celular: req.body.celular,
+                telefone: req.body.telefone,
+                senha: md5(req.body.senha + global.SALT_KEY),
+                 type: req.body.type,
+                value: req.body.value,
+                imagem: req.body.imagem
+            }
+            );
+    
+            res.status(201).send({ 
+                message: 'Usuario cadastrado com sucesso!'
+            });
+           
         }
-        );
-
-        res.status(201).send({ 
-            message: 'Usuario cadastrado com sucesso!'
+        else
+        res.status(400).send({ 
+            message: 'Email ou CPF/CNPJ já utilizados por outro usuário'
         });
-
+        
     } catch (e) {
         res.status(400).send({ 
             message: 'Falha ao cadastrar Usuario', 
             data: e.toString()
         });
 
-        console.log(e)
     }
 
 };
