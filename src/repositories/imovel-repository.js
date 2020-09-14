@@ -24,9 +24,9 @@ exports.getByCidade = async(cidade) => {
     return res;
 }
 
-//Pesquisar todos
+//Pesquisar todos (Limite de 20)
 exports.get = async() => {
-    var res = await Imovel.find({});
+    var res = await Imovel.find({}).limit(20);
     return res;
 }
 
