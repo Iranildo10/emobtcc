@@ -10,25 +10,40 @@ exports.post = async (req, res, next) => {
 
     try {
 
-            await repository.create({
-                provider: req.body.provider,
-                nome: req.body.nome,
-                email: req.body.email,
-                celular: req.body.celular,
-                telefone: req.body.telefone,
-                senha: md5(req.body.senha + global.SALT_KEY),
-                 type: req.body.type,
-                value: req.body.value,
-                imagem: req.body.imagem
-            }
-            );
-    
-            res.status(201).send({ 
-                message: 'Usuario cadastrado com sucesso!'
+        var data = await repository.getByEmail(req.body.email);
+
+        if(data != ""){
+                res.status(400).send({ 
+                    message: 'Email já utilizado!'
+                });
+        }
+        else
+
+        var data = await repository.getByValue(req.body.value);
+
+        if(data != ""){
+            res.status(400).send({ 
+                message: 'CPF/CNPJ já utilizado!'
             });
-           
-        
-        
+        }
+        else
+        await repository.create({
+            provider: req.body.provider,
+            nome: req.body.nome,
+            email: req.body.email,
+            celular: req.body.celular,
+            telefone: req.body.telefone,
+            senha: md5(req.body.senha + global.SALT_KEY),
+             type: req.body.type,
+            value: req.body.value,
+            imagem: req.body.imagem
+        }
+        );
+
+        res.status(201).send({ 
+            message: 'Usuario cadastrado com sucesso!'
+        });
+
     } catch (e) {
         res.status(400).send({ 
             message: 'Falha ao cadastrar Usuario', 

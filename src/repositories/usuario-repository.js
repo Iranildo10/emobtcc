@@ -30,9 +30,15 @@ exports.login = async(email, senha) => {
     return res;
 }
 
-exports.getByEmailAndCpf = async(email, value) => {
+exports.getByEmail = async(email) => {
     var res = await Usuario.find({
-        email: email,
+        email: email
+    });
+    return res;
+}
+
+exports.getByValue = async(value) => {
+    var res = await Usuario.find({
         value: value
     });
     return res;
