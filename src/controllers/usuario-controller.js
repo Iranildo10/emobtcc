@@ -10,11 +10,6 @@ exports.post = async (req, res, next) => {
 
     try {
 
-        var data = await repository.getByEmailAndCpf(req.body.email, req.body.value);
-
-
-        if(data = ""){
-
             await repository.create({
                 provider: req.body.provider,
                 nome: req.body.nome,
@@ -32,11 +27,7 @@ exports.post = async (req, res, next) => {
                 message: 'Usuario cadastrado com sucesso!'
             });
            
-        }
-        else
-        res.status(400).send({ 
-            message: 'Email ou CPF/CNPJ já utilizados por outro usuário'
-        });
+        
         
     } catch (e) {
         res.status(400).send({ 
